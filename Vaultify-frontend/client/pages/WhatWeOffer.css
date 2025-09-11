@@ -1,0 +1,10 @@
+/* What We Offer page styles */
+.offer-container { background: #11111b; overflow: hidden; }
+
+/* Animated Back Button (same as other pages) */
+.animated-back-btn { color:#fff; background:rgba(17,17,27,0.4); border:1px solid rgba(255,255,255,0.18); border-radius:9999px; padding:8px 14px 8px 8px; backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.04); transition: transform .3s ease, box-shadow .3s ease, background .3s ease; }
+.animated-back-btn .chevron-icon { background: linear-gradient(135deg,#B95DFE 0%,#6F26FF 100%); color:#fff; box-shadow:0 10px 20px rgba(185,93,254,.35); animation: back-pulse 2.2s ease-in-out infinite; }
+.animated-back-btn .label { font-weight:700; font-family: Inter, sans-serif; }
+.animated-back-btn:hover { transform: translateY(-2px); box-shadow:0 16px 30px rgba(0,0,0,.35), 0 0 20px rgba(185,93,254,.3); }
+.animated-back-btn:active { transform: translateY(0); }
+@keyframes back-pulse { 0%{box-shadow:0 0 0 0 rgba(185,93,254,.35);} 70%{box-shadow:0 0 0 12px rgba(185,93,254,0);} 100%{box-shadow:0 0 0 0 rgba(185,93,254,0);} }

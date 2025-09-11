@@ -1,0 +1,402 @@
+/* Register Page Specific Styles */
+.register-container {
+  background: #11111b;
+  overflow: hidden;
+}
+
+/* Background Pattern Styles for Register */
+.register-background-pattern {
+  position: absolute;
+  top: 86px;
+  left: 159px;
+  width: 1166px;
+  height: 736px;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.register-pattern-container {
+  display: flex;
+  width: 1186px;
+  height: 736px;
+  align-items: flex-start;
+  gap: 11.663px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.register-pattern-text {
+  width: 29.989px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 36.654px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 122.6%;
+  letter-spacing: 16.494px;
+  white-space: nowrap;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  opacity: 0.05;
+}
+
+.register-pattern-text:nth-child(odd) {
+  color: rgba(119, 119, 119, 0.06);
+  font-weight: 400;
+}
+
+.register-pattern-text:nth-child(even) {
+  animation: register-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes register-glow {
+  from {
+    color: rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 3px rgba(185, 93, 254, 0.2);
+  }
+  to {
+    color: rgba(255, 255, 255, 0.25);
+    text-shadow: 0 0 8px rgba(185, 93, 254, 0.3);
+  }
+}
+
+/* 3D Elements */
+.register-3d-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.register-3d-elements .floating-cylinder {
+  position: absolute;
+  top: 120px;
+  right: 200px;
+  width: 80px;
+  height: 120px;
+  background: linear-gradient(135deg, #c9c9c9 0%, #8a8a8a 100%);
+  border-radius: 40px;
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.1),
+    inset 0 20px 40px rgba(255, 255, 255, 0.1),
+    inset 0 -20px 40px rgba(0, 0, 0, 0.2);
+  animation: register-float-slow 8s ease-in-out infinite;
+  transform: perspective(1000px) rotateX(15deg) rotateY(-10deg);
+}
+
+.register-3d-elements .floating-cross {
+  position: absolute;
+  top: 250px;
+  left: 80px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #a0a0a0 0%, #666666 100%);
+  transform: perspective(1000px) rotateX(25deg) rotateY(35deg);
+  animation: register-float-medium 6s ease-in-out infinite;
+}
+
+.register-3d-elements .floating-cross::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 10px;
+  background: inherit;
+  border-radius: 5px;
+}
+
+.register-3d-elements .floating-cross::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 50px;
+  height: 10px;
+  background: inherit;
+  border-radius: 5px;
+}
+
+.register-3d-elements .floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.register-3d-elements .shape-1 {
+  position: absolute;
+  top: 400px;
+  right: 150px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #b95dfe 0%, #6f26ff 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(185, 93, 254, 0.3);
+  animation: register-float-fast 4s ease-in-out infinite;
+}
+
+.register-3d-elements .shape-2 {
+  position: absolute;
+  top: 600px;
+  left: 120px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #8fe600 0%, #6bc700 100%);
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(143, 230, 0, 0.3);
+  animation: register-float-slow 7s ease-in-out infinite reverse;
+}
+
+.register-3d-elements .shape-3 {
+  position: absolute;
+  top: 300px;
+  right: 300px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+  border-radius: 2px;
+  animation: register-float-medium 5s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+/* Floating Animations */
+@keyframes register-float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(5deg);
+  }
+}
+
+@keyframes register-float-medium {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-3deg);
+  }
+}
+
+@keyframes register-float-fast {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+/* Animated Back Button */
+.animated-back-btn {
+  color: #ffffff;
+  background: rgba(17, 17, 27, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  padding: 8px 14px 8px 8px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255,255,255,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.animated-back-btn .chevron-icon {
+  background: linear-gradient(135deg, #B95DFE 0%, #6F26FF 100%);
+  color: white;
+  box-shadow: 0 10px 20px rgba(185, 93, 254, 0.35);
+}
+.animated-back-btn .label {
+  font-weight: 700;
+  font-family: Inter, sans-serif;
+}
+.animated-back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35), 0 0 20px rgba(185, 93, 254, 0.3);
+}
+.animated-back-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes back-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(185, 93, 254, 0.35); }
+  70% { box-shadow: 0 0 0 12px rgba(185, 93, 254, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(185, 93, 254, 0); }
+}
+.animated-back-btn .chevron-icon { animation: back-pulse 2.2s ease-in-out infinite; }
+
+/* Form Styling */
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="email"]:focus,
+.register-container input[type="password"]:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #b95dfe;
+  box-shadow: 0 0 0 2px rgba(185, 93, 254, 0.2);
+}
+
+.register-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Checkbox Styling */
+.register-container input[type="checkbox"] {
+  accent-color: #b95dfe;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.register-container input[type="checkbox"]:checked {
+  background: #b95dfe;
+  border-color: #b95dfe;
+}
+
+.register-container input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 2px rgba(185, 93, 254, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .register-background-pattern {
+    width: 100%;
+    left: 0;
+  }
+
+  .register-pattern-container {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .register-3d-elements .floating-cylinder {
+    width: 60px;
+    height: 90px;
+    right: 100px;
+  }
+
+  .register-3d-elements .floating-cross {
+    width: 40px;
+    height: 40px;
+    left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-container > div:first-child {
+    padding: 1rem;
+  }
+
+  .register-container > div:last-child {
+    padding: 2rem 1rem;
+  }
+
+  .register-pattern-text {
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
+
+  .register-3d-elements .floating-cylinder,
+  .register-3d-elements .floating-cross,
+  .register-3d-elements .floating-shapes {
+    display: none;
+  }
+
+  .register-container h2 {
+    font-size: 32px !important;
+  }
+
+  .register-container h3 {
+    font-size: 24px !important;
+  }
+
+  .register-container .text-6xl {
+    font-size: 3rem !important;
+  }
+
+  .register-container .text-8xl {
+    font-size: 6rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .register-container {
+    flex-direction: column;
+  }
+
+  .register-container > div {
+    flex: none;
+  }
+
+  .register-container > div:first-child {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .register-container > div:last-child {
+    padding: 1rem;
+  }
+
+  .register-container .grid-cols-1.sm\\:grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container input {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .register-container button {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  .register-container .text-6xl {
+    font-size: 2rem !important;
+  }
+
+  .register-container .text-8xl {
+    font-size: 4rem !important;
+  }
+}
+
+/* Error State Styling */
+.register-container input.border-red-500 {
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.register-container input.border-red-500:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Success State for Connected Wallet */
+.register-container .bg-green-500\/20 {
+  background: rgba(34, 197, 94, 0.2);
+}
+
+.register-container .border-green-500\/30 {
+  border-color: rgba(34, 197, 94, 0.3);
+}

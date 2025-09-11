@@ -1,0 +1,217 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Impact&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Vaultify dark theme colors
+   */
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 34 34 42%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --radius: 0.5rem;
+
+    /* Vaultify brand colors */
+    --vaultify-dark: 240 5% 7%;
+    --vaultify-darker: 240 5% 11%;
+    --vaultify-purple: 272 96% 67%;
+    --vaultify-green: 82 100% 51%;
+    --vaultify-gradient-purple: 257 76% 58%;
+    --vaultify-text-gray: 0 0% 40%;
+    --vaultify-text-light-gray: 0 0% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-vaultify-dark text-white font-inter;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .vaultify-bg-gradient {
+    background: #11111b;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vaultify-bg-gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .vaultify-gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .vaultify-gradient-orb.purple {
+    background: #b95dfe;
+  }
+
+  .vaultify-gradient-orb.green {
+    background: #8fe600;
+  }
+
+  .vaultify-gradient-orb.dark {
+    background: #1b1b2a;
+    filter: blur(130px);
+    opacity: 1;
+  }
+
+  .vaultify-pattern-text {
+    position: absolute;
+    font-family: Inter, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.226;
+    letter-spacing: 16px;
+    text-align: center;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  .vaultify-btn-primary {
+    background: linear-gradient(90deg, #fff -153.79%, #6f26ff 100%);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .vaultify-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(185, 93, 254, 0.3);
+  }
+
+  .vaultify-btn-secondary {
+    background: #dac8ff;
+    color: #b95dfe;
+    padding: 10px 22px;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .vaultify-btn-secondary:hover {
+    background: #c5b0ff;
+    transform: translateY(-1px);
+  }
+
+  /* Logout Button - solid color */
+  .logout-btn {
+    background: #6F26FF;
+    border: none;
+    position: relative;
+  }
+  .logout-btn:hover {
+    filter: brightness(1.05);
+  }
+
+  .vaultify-feature-card {
+    background: #222121;
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .vaultify-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .vaultify-faq-section {
+    background: rgba(32, 24, 47, 0.14);
+    backdrop-filter: blur(263px);
+    border-radius: 45px;
+    padding: 42px;
+  }
+
+  .vaultify-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+  }
+
+  .vaultify-faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .vaultify-title-gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.76) -352.73%,
+      rgba(111, 38, 255, 0.76) 101.02%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(185, 93, 254, 0.5);
+  }
+
+  .backdrop-blur-vaultify {
+    backdrop-filter: blur(263px);
+  }
+}
