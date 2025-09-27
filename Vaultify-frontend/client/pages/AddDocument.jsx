@@ -28,39 +28,43 @@ export default function AddDocument() {
     }
   }, [file]);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (!file) return;
+const onSubmit = async (e) => {
+  e.preventDefault();
+  if (!file) return;
 
-    // If user is authenticated with backend, upload file to backend API
-    const token = getToken();
-    if (token) {
-      try {
-        const form = new FormData();
-        form.append('file', file, file.name);
+  const token = getToken();
+  let doc = null;
 
-        const res = await apiFetch('/api/documents/upload', {
-          method: 'POST',
-          body: form,
-        });
+  // Try backend first if token exists
+  if (token) {
+    try {
+      const form = new FormData();
+      form.append("file", file, file.name);
+      form.append("title", title);
+      form.append("description", description);
 
-        if (res && res.success && res.doc) {
-          incrementNotification(1);
-          toast.success('Document uploaded successfully');
-          navigate(`/documents/${res.doc._id}`);
-          return;
-        }
+      const res = await apiFetch("/api/documents/upload", {
+        method: "POST",
+        body: form,
+      });
 
-        toast.error('Upload failed');
-      } catch (err) {
-        console.error('Upload error', err);
-        toast.error('Upload failed');
+      // ✅ backend success
+      if (res && res.success && res.doc) {
+        incrementNotification(1);
+        toast.success("Document uploaded successfully");
+        navigate(`/documents/${res.doc._id}`);
+        return; // stop here
+      } else {
+        console.warn("Backend upload failed, falling back to local save");
       }
-
-      return;
+    } catch (err) {
+      console.error("Backend upload error:", err);
+      // fall through to local save
     }
+  }
 
-    // Fallback: save locally
+  // ✅ Fallback: always runs if backend unavailable or no token
+  try {
     const dataUrl = await new Promise((resolve, reject) => {
       const fr = new FileReader();
       fr.onload = () => resolve(fr.result);
@@ -68,17 +72,23 @@ export default function AddDocument() {
       fr.readAsDataURL(file);
     });
 
-    const doc = saveDoc({
+    doc = saveDoc({
       title,
       description,
       fileName: file.name,
       fileType: file.type,
       dataUrl,
     });
+
     incrementNotification(1);
-    toast.success("Document added successfully");
+    toast.success("Document saved locally (backend unavailable)");
     navigate(`/documents/${doc.id}`);
-  };
+  } catch (fallbackErr) {
+    console.error("Local save failed:", fallbackErr);
+    toast.error("Could not save document at all");
+  }
+};
+
 
   return (
     <div className="dashboard">
